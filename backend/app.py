@@ -44,7 +44,15 @@ class OttomanResource(Resource):
             })
         return jsonify({"error": "Transliteration Not Found"}), 404  
     
-    
+ 
+        """
+        validate user
+        get image and limit 3 to per day for user
+        store images refers to user 
+        process images // later implementation 
+        delete images
+        
+        """   
     
     
     
