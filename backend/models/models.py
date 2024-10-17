@@ -67,6 +67,10 @@ class User(db.Model):
     Images = db.relationship("Image", backref="User")
     def __repr__(self):
         return f"<User:{self.UserName}>"
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    
     
 class Image(db.Model):
     __tablename__ = "Image"
