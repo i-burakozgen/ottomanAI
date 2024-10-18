@@ -5,14 +5,18 @@ from flask_migrate import Migrate
 from models.models import Words, Variations, Meanings, PersianTransliterations
 from flask_sqlalchemy import SQLAlchemy
 from exts import db
-
-
+from middleware.middleware import token_required 
+from routes.user_routes import user_bp
 
 app = Flask(__name__)
 app.config.from_object(DevConfig)
 api = Api(app,doc = '/docs')
+
 db.init_app(app)
 migrate = Migrate(app, db)
+
+app.register_blueprint(user_bp, url_prefix="/auth")
+
 
 
 
@@ -53,7 +57,6 @@ class OttomanResource(Resource):
         delete images
         
         """   
-    
     
     
     
