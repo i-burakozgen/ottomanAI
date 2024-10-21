@@ -63,5 +63,3 @@ Check out the frontend of the app currently hosted on Netlify:
 👉 Netlify: https://dynamic-sorbet-9e018e.netlify.app/
 
 Stay tuned for updates as we roll out the full site with both frontend and backend functionalities!
-
-This enhanced explanation goes deeper into your project’s features and workflow, while also using headers, lists, and structure to make it visually appealing.
