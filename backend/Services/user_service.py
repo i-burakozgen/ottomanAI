@@ -4,8 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from flask import current_app
 from datetime import datetime, timedelta
+
+
+
 class UserService:
-    
+        
     @staticmethod
     def RegisterUser(username, email, password):
     
@@ -52,7 +55,7 @@ class UserService:
                    
     @staticmethod
     def getUserById(id):
-        return User.query.get(id)
+        return User.query.get(Id = id)
     
     @staticmethod
     def getUserByName(username):

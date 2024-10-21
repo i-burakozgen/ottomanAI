@@ -6,7 +6,7 @@ from models.models import Words, Variations, Meanings, PersianTransliterations
 from flask_sqlalchemy import SQLAlchemy
 from exts import db
 from middleware.middleware import token_required 
-from routes.user_routes import user_bp
+from routes.user_routes import user_bp, user_ns
 
 app = Flask(__name__)
 app.config.from_object(DevConfig)
@@ -17,6 +17,7 @@ migrate = Migrate(app, db)
 
 app.register_blueprint(user_bp, url_prefix="/auth")
 
+api.add_namespace(user_ns, path='/auth')
 
 
 
@@ -47,6 +48,7 @@ class OttomanResource(Resource):
                 "PersianTransliterations":[transliteration.PersiantransliterationName for transliteration in word.PersianTransliterations],
             })
         return jsonify({"error": "Transliteration Not Found"}), 404  
+    
     
  
         """
