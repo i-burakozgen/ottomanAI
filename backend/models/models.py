@@ -61,9 +61,9 @@ class PersianTransliterations(db.Model):
 class User(db.Model):
     __tablename__ = "User"
     Id = db.Column(db.Integer, primary_key=True)
-    UserName = db.Column(db.String(50), nullable=False, unique=True)
-    email = db.Column(db.String(200), nullable=False, unique=True)
-    password = db.Column(db.String(100), nullable=False)
+    UserName = db.Column(db.String(25), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(255), nullable=False)
     Images = db.relationship("Image", backref="User")
     def __repr__(self):
         return f"<User:{self.UserName}>"
