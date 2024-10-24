@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Backend_dict")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be9e03361f37c99f138032b4590196e99f76712b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72875eacc44475d702fb8a00a7cb52d01cf1d314")]
 [assembly: System.Reflection.AssemblyProductAttribute("Backend_dict")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Backend_dict")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

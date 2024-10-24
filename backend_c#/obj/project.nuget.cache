@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fOoBRLhM5Jo=",
+  "dgSpecHash": "ELQdAhecST8=",
   "success": true,
-  "projectFilePath": "/Users/burakozgen/Desktop/ReactjsBootcamp/Dict_Full-laptop/Backend_C#_Dict/Backend_dict/Backend_dict.csproj",
+  "projectFilePath": "/Users/burakozgen/Desktop/ReactjsBootcamp/ottoman/backend_c#/Backend_dict.csproj",
   "expectedPackageFiles": [
     "/Users/burakozgen/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/burakozgen/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

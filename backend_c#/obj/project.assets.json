@@ -6838,11 +6838,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/burakozgen/Desktop/ReactjsBootcamp/Dict_Full-laptop/Backend_C#_Dict/Backend_dict/Backend_dict.csproj",
+      "projectUniqueName": "/Users/burakozgen/Desktop/ReactjsBootcamp/ottoman/backend_c#/Backend_dict.csproj",
       "projectName": "Backend_dict",
-      "projectPath": "/Users/burakozgen/Desktop/ReactjsBootcamp/Dict_Full-laptop/Backend_C#_Dict/Backend_dict/Backend_dict.csproj",
+      "projectPath": "/Users/burakozgen/Desktop/ReactjsBootcamp/ottoman/backend_c#/Backend_dict.csproj",
       "packagesPath": "/Users/burakozgen/.nuget/packages/",
-      "outputPath": "/Users/burakozgen/Desktop/ReactjsBootcamp/Dict_Full-laptop/Backend_C#_Dict/Backend_dict/obj/",
+      "outputPath": "/Users/burakozgen/Desktop/ReactjsBootcamp/ottoman/backend_c#/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/burakozgen/.nuget/NuGet/NuGet.Config"
