@@ -26,4 +26,4 @@ To set up Ottoman Text Translit locally, follow these steps:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/ottomanAI.git
+   git clone https://github.com/i-burakozgen/ottomanAI.git
