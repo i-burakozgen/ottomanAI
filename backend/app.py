@@ -2,11 +2,15 @@ from flask import Flask,jsonify, request
 from flask_restx import Api, Resource, fields
 from config import DevConfig
 from flask_migrate import Migrate
-from models.models import Words, Variations, Meanings, PersianTransliterations,User
+from models.models import Words, Variations, Meanings, PersianTransliterations,User, Image
 from exts import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from sqlalchemy import func
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+from datetime import datetime, timedelta
+from sqlalchemy import and_
+
 
 app = Flask(__name__)
 app.config.from_object(DevConfig)
@@ -15,7 +19,8 @@ api = Api(app,doc = '/docs')
 db.init_app(app)
 migrate = Migrate(app, db)
 JWTManager(app)
-
+photos = UploadSet("photos", extensions=('jpg', 'jpeg', 'png'))
+configure_uploads(app, photos)
 
 word_model = api.model(
     "Word", {
@@ -41,6 +46,8 @@ login_model = api.model(
         "password": fields.String(),
     }
 )
+
+
 
 @api.route('/api/words/<string:word_name>', methods=["GET"])
 class WordResource(Resource):    
@@ -168,6 +175,39 @@ class DeleteUser(Resource):
             except Exception as e:
                 db.session.rollback()
                 return {"message": "Error occurred while deleting user"}, 500
+
+
+@api.route("/upload")
+class imageUpload(Resource):
+    @jwt_required()
+    def post(self):
+        
+        
+        current_user = get_jwt_identity()
+        db_user = User.query.filter_by(UserName=current_user).first()
+
+        today = datetime.utcnow().date()
+        upload_count =Image.query.filter(
+            Image.UserId == db_user.Id,
+            func.date(Image.UploadTime) == today
+        ).count()
+        if upload_count >= 3:
+            return {"message": "You can upload a maximum of 3 images per day."}, 403
+        
+        if 'photo' not in request.files:
+            return {"message": "No image file provided."}, 400
+        file = request.files['photo']
+        
+        if file and file.filename:
+            filename = photos.save(file)
+            image_path = f"static/uploads/{filename}"
+            new_image = Image(UserId=db_user.Id, ImagePath=image_path) 
+            db.session.add(new_image)
+            db.session.commit()
+            
+            return {"message": "Image uploaded successfully", "image_path": image_path}, 201
+        
+        return {"message": "Error occurred while uploading the image."}, 500
         
     
 if __name__ == "__main__":
