@@ -8,6 +8,7 @@ from flask_uploads import UploadSet, configure_uploads
 from auth import auth_ns
 from user import user_ns
 from dictionary import dictionary_ns
+from flask_cors import CORS
 
 
 
@@ -24,4 +25,6 @@ def factoryCreateApp(config):
     api.add_namespace(auth_ns)
     api.add_namespace(dictionary_ns)
     api.add_namespace(user_ns)
+    CORS(app)
+    
     return app

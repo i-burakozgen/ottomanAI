@@ -10,22 +10,7 @@ const Dictionary = () => {
 
   // Function to simulate data fetching from dummyData based on query
   const handleSearch = () => {
-    if (query.length > 2) {
-      const filteredResults = [
-        {
-          word: dummyData.wordName,
-          meanings: dummyData.meanings.$values.map(m => m.meaningName),
-          transliterations: dummyData.persianTransliterations.$values,
-        },
-      ].filter(entry => 
-        entry.word.toLowerCase().includes(query.toLowerCase()) || 
-        entry.meanings.some(m => m.toLowerCase().includes(query.toLowerCase()))
-      );
-
-      setResults(filteredResults);
-    } else {
-      setResults([]);
-    }
+    
   };
 
   return (

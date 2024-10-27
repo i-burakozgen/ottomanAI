@@ -78,3 +78,14 @@ class imageUpload(Resource):
             return {"message": "Image uploaded successfully", "image_path": image_path}, 201
         
         return {"message": "Error occurred while uploading the image."}, 500
+    
+    
+@user_ns.route("/refresh")
+class Refresh_Token(Resource):
+    @jwt_required(refresh=True)
+    def post():
+        current_user = get_jwt_identity()
+        new_accsess_token = create_access_token(identity=current_user)
+        return make_response(jsonify({"accsess token": new_accsess_token}),200)
+        
+    

@@ -43,7 +43,7 @@ const SlideableGallery = ({ images = [] }) => {
     >
       <Box maxW="container.lg" mx="auto">
         <Heading as="h2" size="2xl" mb={6}>
-          Gallery Showcase
+          Features Showcase
         </Heading>
         {images.length > 0 ? (
           <Slider {...sliderSettings}>
