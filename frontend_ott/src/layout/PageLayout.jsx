@@ -1,6 +1,7 @@
 import { Flex, Box } from "@chakra-ui/react";
 import SideBar from "../components/SideBar/SideBar";
 import { Outlet, useLocation } from "react-router-dom";
+import AuthPage from "../pages/AuthPage";
 
 const PageLayout = ({ chidren }) => {
   const location = useLocation();
