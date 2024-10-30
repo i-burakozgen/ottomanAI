@@ -10,7 +10,7 @@ export const heroData = [
     {
         heading:"AI Transliteration & Ottoman Dictionary",
         text:"Import images with help of the ai and ocr Transform Ottoman text into modern Turkish and English. Search for word from rich and truested database and transliterate Ottoman scripts.",
-        buttonTextAi:"Try Transliteration",
+        buttonTextAi:"Get Started With AI",
         buttonTextDict:"Go To Dictionary",
     }
 ]
@@ -30,7 +30,7 @@ export const featuersData =
             imageLight:bookLight,
             dictTextAlt:"dictonary page image",
             dictHeading:"Ottoman Dictionary",
-            dictText:"Search for thousands of Ottoman words and their meanings in modern from trusted resources.",
+            dictText:"Search for thousands of Ottoman words and their meanings in written both latin and ottoman from trusted resources.",
 
         },
         
@@ -40,7 +40,6 @@ export const featuersData =
 export const galleryData = [
     DictScreenShot,
     ocrPic,
-    mobilePic,        
 ]
 export const aboutData = [
 

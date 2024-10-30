@@ -1,37 +1,72 @@
 import { 
-    Box, Heading, Text, Button, VStack, HStack, Link, Image, SimpleGrid, useColorMode, useColorModeValue 
-  } from '@chakra-ui/react';
-  import { useNavigate } from 'react-router-dom';
-  import { heroData } from '../../assets/homeData';
+  Box, Heading, Text, Button, VStack, HStack, useColorMode, useColorModeValue 
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { heroData } from '../../assets/homeData';
+
 const Hero = () => {
-    const navigate = useNavigate();
-    const { colorMode, toggleColorMode } = useColorMode();
-    const heroBgGradient = useColorModeValue("linear(to-r, teal.400, blue.800)", "linear(to-r, teal.800, blue.900)");
-    const heroTextColor = useColorModeValue("gray.800", "white");
+  const navigate = useNavigate();
+  const { colorMode } = useColorMode();
+  const heroBgGradient = useColorModeValue(
+    "linear(to-r, teal.400, blue.500)",
+    "linear(to-r, teal.800, blue.900)"
+  );
+  const heroTextColor = useColorModeValue("gray.800", "white");
+
   return (
     <Box
-        bgGradient={heroBgGradient}
-        color={heroTextColor}
-        textAlign="center"
-        py={16}
-        px={8}
-      >
-        <Heading as="h1" size="3xl" mb={4}>
+      minHeight="100vh"
+      bgGradient={heroBgGradient}
+      color={heroTextColor}
+      textAlign="center"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      px={8}
+      py={{ base: 20, md: 24 }}
+    >
+      <VStack spacing={6} maxW="container.md">
+        <Heading 
+          as="h1" 
+          size="2xl" 
+          fontWeight="bold" 
+          mb={2} 
+          lineHeight="shorter"
+          textTransform="uppercase"
+          letterSpacing="wide"
+        >
           {heroData[0].heading}
         </Heading>
-        <Text fontSize="xl" mb={8}>
-        {heroData[0].text}
+        
+        <Text fontSize="lg" fontWeight="medium" mb={4} maxW="md">
+          {heroData[0].text}
         </Text>
-        <HStack spacing={4} justify="center">
-          <Button colorScheme="teal" size="lg" onClick={() => navigate('/ai-translate')}>
-          {heroData[0].buttonTextAi}
+        
+        <HStack spacing={4}>
+          <Button
+            size="lg"
+            bgGradient="linear(to-r, teal.300, teal.500)"
+            color="white"
+            _hover={{ bgGradient: "linear(to-r, teal.400, teal.600)" }}
+            onClick={() => navigate('/ai-translate')}
+            shadow="md"
+          >
+            {heroData[0].buttonTextAi}
           </Button>
-          <Button colorScheme="blue" size="lg" onClick={() => navigate('/dictionary')}>
-          {heroData[0].buttonTextDict}
+          <Button
+            size="lg"
+            bgGradient="linear(to-r, blue.300, blue.500)"
+            color="white"
+            _hover={{ bgGradient: "linear(to-r, blue.400, blue.600)" }}
+            onClick={() => navigate('/dictionary')}
+            shadow="md"
+          >
+            {heroData[0].buttonTextDict}
           </Button>
         </HStack>
-      </Box>
-  )
-}
+      </VStack>
+    </Box>
+  );
+};
 
-export default Hero
+export default Hero;
