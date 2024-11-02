@@ -10,9 +10,12 @@ const AuthForm = () => {
   const [isLogin, setLogin] = useState(false);
   const navigate = useNavigate();
   const handleBack = () => {
-    navigate("/"); // Redirect to home page
+    navigate("/"); 
   };
-  
+  const handleSuccsessfulSingUp = () => {
+    setLogin((isLogin) => !isLogin)
+    
+  }
 
   return (
     <>
@@ -24,7 +27,7 @@ const AuthForm = () => {
             </Button>
           </Flex>
         <Image src={authData[0].logo} h={24} cursor={"pointer"} alt="logo"/>
-       {!isLogin ? <Login/> : <Signup/>}
+       {!isLogin ? <Login/> : <Signup onSuccessSignUp = {handleSuccsessfulSingUp} />}
         {/* ---or-----*/}
         <Flex alignItems={"center"} justifyContent={"center"} my={4} gap={1} w={"full"}>
             <Box flex={2} h={"1px"} bg={"gray.400"}/>

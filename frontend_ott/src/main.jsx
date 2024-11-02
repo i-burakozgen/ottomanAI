@@ -11,6 +11,7 @@ import AIPage from "./pages/AIPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Contact from "./pages/Contact.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import Login from "./components/AuthForm/Login.jsx";
 // const styles = {
 //   global: (props) => ({
 //     body: {
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
           path:"/",
           element:<HomePage/>
         }
+        
         
         
 

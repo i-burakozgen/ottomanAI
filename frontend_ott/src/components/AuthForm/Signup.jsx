@@ -8,7 +8,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-const Signup = () => {
+import { Alert } from "@/components/ui/alert"
+
+const Signup = ({onSuccessSignUp}) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -24,6 +26,8 @@ const Signup = () => {
     trigger,
     reset,
   } = useForm();
+
+
   const onSubmit = async (data) => {
     if (data.password === data.confirmPassword) {
       const body = {
@@ -47,8 +51,15 @@ const Signup = () => {
   
         const result = await response.json();
         console.log("Response data:", result);
-        reset(); 
-  
+        console.log("status code:", response.status);
+        if (response.status === 201) {
+          alert("Signup successful! Please log in.");
+          reset();
+          onSuccessSignUp();
+        } else {
+          console.error("Signup failed:", result);
+          alert(`Signup failed: ${result.message || "Unknown error"}`);
+        }
       } catch (error) {
         console.error("Fetch error:", error);
         alert("Signup failed. Please try again.");
@@ -78,9 +89,9 @@ const Signup = () => {
         onBlur={() => trigger("email")}
       />
       {errors.email && (
-        <Text color="red.500" fontSize="sm">
-          {errors.email.message}
-        </Text>
+        <Alert status="error" title="mail" size="sm">
+          {errors.mail.message}
+        </Alert>
       )}
       <Input
         placeholder="username"
