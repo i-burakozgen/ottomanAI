@@ -22,7 +22,7 @@ export const featuersData =
         imageLight:aiLightFeatures,
         aiTextAlt: "under construction image",
         aiHeading: "AI Transliteration",
-        aiText: "Use our state-of-the-art AI model to parse images and transliterate Ottoman text into modern Turkish and English preserving its rich linguistic heritage."
+        aiText: "Our innovative AI transliteration feature is currently under development while we seek funding for advanced features. In the meantime, you can explore our Ottoman dictionary and feel free to contact me for any inquiries or collaboration opportunities.",
 
         },
         dictionaryData:{
@@ -44,7 +44,7 @@ export const galleryData = [
 export const aboutData = [
 
     {
-        text:"I'am passionate full stack developer dedicated to preserving and making accessible AI and modern web technologies.",
+        text:"I'am passionate full stack developer this is a startup project open for future developments and investments if you are interested to involve",
 
         linkdinData:{
             image:linkedinProfilePic,/*LinkdingProfileImg,*/
