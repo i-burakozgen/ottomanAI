@@ -3,6 +3,7 @@ import { Input, Button, Box, Alert, AlertIcon } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 const Login = ({ onSuccessLogin }) => {
   const { register, handleSubmit,reset, formState: { errors }, trigger } = useForm();
+  const [loginError, setLoginError] = useState("");
 
   const onSubmit = async (data) => 
     {

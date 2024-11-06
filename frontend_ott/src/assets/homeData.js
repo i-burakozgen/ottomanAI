@@ -4,7 +4,7 @@ import bookDark from "./bookDictDarkFeatures.jpeg"
 import bookLight from "./bookDictLightFeatures.jpeg"
 import linkedinProfilePic from "./linkdinProfile.jpg"
 import DictScreenShot from "./dictt.png"
-import ocrPic from "./ocrAIPic.webp"
+import aiPic from "./AIpic.png"
 import mobilePic from "./mobileAppINTRO.webp"
 export const heroData = [
     {
@@ -39,7 +39,7 @@ export const featuersData =
 ]
 export const galleryData = [
     DictScreenShot,
-    ocrPic,
+    aiPic,
 ]
 export const aboutData = [
 
