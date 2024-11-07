@@ -7,7 +7,6 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
-import { useState } from "react";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { sideBarItems } from "./sideBarItems.js";
@@ -17,19 +16,17 @@ import {
   MobileBrandLogoDark,
   MobileBrandLogoLight,
 } from "../../assets/index";
-import { AiOutlineUserAdd, AiOutlineUser, AiOutlineLogout } from "react-icons/ai"; // Import icons
+import { AiOutlineUserAdd, AiOutlineUser, AiOutlineLogout } from "react-icons/ai"; 
+import { useAuth } from "../../AuthContext.jsx";
 
 const SideBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isAuthenticated, logout } = useAuth(); 
   const navigate = useNavigate();
 
-  // State to manage if the user is logged in
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Default state is logged out
-
   const handleLogout = () => {
-    setIsLoggedIn(false); // Reset the logged-in state
-    // Add additional logout logic here (e.g., clearing tokens)
-    navigate("/"); // Redirect to home or login page
+    logout(); 
+    navigate("/auth"); 
   };
 
   return (
@@ -62,7 +59,7 @@ const SideBar = () => {
             <Link
               to={"/"}
               as={RouterLink}
-              display={{ base: "none", md: "block" }} 
+              display={{ base: "none", md: "block" }}
               cursor="pointer"
             >
               {colorMode === "dark" ? <BrandLogoLight /> : <BrandLogoDark />}
@@ -82,7 +79,7 @@ const SideBar = () => {
             </Link>
           </Box>
 
-          <Flex display={"column"} gap={5} cursor={"pointer"}>
+          <Flex direction={"column"} gap={5} cursor={"pointer"}>
             {sideBarItems().map((item, index) => {
               const IconComponent =
                 colorMode === "dark" ? item.iconLight : item.iconDark;
@@ -127,9 +124,8 @@ const SideBar = () => {
           </Flex>
         </Box>
 
-        {/* Conditional Rendering for Register, Profile, and Logout Icons */}
-        <Flex display={"column"} gap={5}>
-          {!isLoggedIn ? (
+        <Flex direction={"column"} gap={5}>
+          {!isAuthenticated ? (
             <Link
               display={"flex"}
               as={RouterLink}

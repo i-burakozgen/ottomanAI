@@ -1,41 +1,27 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Input, Button, Box, Alert, AlertIcon } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../AuthContext"; 
+import { useNavigate } from "react-router-dom";
+
 const Login = ({ onSuccessLogin }) => {
-  const { register, handleSubmit,reset, formState: { errors }, trigger } = useForm();
+  const { register, handleSubmit, reset, formState: { errors }, trigger } = useForm();
+  const { login } = useAuth();
   const [loginError, setLoginError] = useState("");
-
-  const onSubmit = async (data) => 
-    {
-    const body = {
-      username: data.username,
-      password: data.password,
-    };
-
-    
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      }
-      fetch("/auth/login", requestOptions)
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data)
-        
-      })
-      
-
-      
-
-      reset()
-    
+  const navigate = useNavigate();
+  const onSubmit = async (data) => {
+    const result = await login(data.username, data.password);
+    if (result.success) {
+      navigate("/")
+      reset();
+      if (onSuccessLogin) onSuccessLogin();
+    } else {
+      setLoginError(result.message || "Login failed");
+    }
   };
 
   return (
-    <Box width="300px" mx="auto"> {/* Center the form */}
+    <Box width="300px" mx="auto">
       {loginError && (
         <Alert status="error" mb={4}>
           <AlertIcon />
@@ -45,15 +31,12 @@ const Login = ({ onSuccessLogin }) => {
 
       <Box mb={4}>
         <Input
-          placeholder="username"
+          placeholder="Username"
           fontSize={14}
           type="text"
           {...register("username", {
             required: "Username is required",
-            maxLength: {
-              value: 25,
-              message: "Username cannot exceed 25 characters",
-            },
+            maxLength: { value: 25, message: "Username cannot exceed 25 characters" },
           })}
           onBlur={() => trigger("username")}
         />
@@ -69,13 +52,10 @@ const Login = ({ onSuccessLogin }) => {
         <Input
           fontSize={14}
           type="password"
-          placeholder="password"
+          placeholder="Password"
           {...register("password", {
             required: "Password is required",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters",
-            },
+            minLength: { value: 8, message: "Password must be at least 8 characters" },
           })}
           onBlur={() => trigger("password")}
         />
